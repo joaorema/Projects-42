@@ -11,7 +11,7 @@ int is_power_of_2(unsigned int n)
 
 int main()
 {
-	int teste = 1000;
+	int teste = 1;
 	int result = is_power_of_2(teste);
 	printf("%i\n", result);
 }
