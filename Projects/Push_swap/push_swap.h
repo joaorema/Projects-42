@@ -23,7 +23,7 @@ typedef struct s_box
 	int 		nb;           /* valor do numero */
 	int 		position;     /* posicao do valor */	
 	int 		moves;	      /* quantos moves precisa para ir ao sito */
-	int		push_price    /* quantos moves precisa para ir ao sitio correcto */
+	int		push_price;    /* quantos moves precisa para ir ao sitio correcto */
 	bool		above_median; /* acima ou abaixo do mediana? */
 	bool		cheapest;     /* mais baratos em termos de moves? */
 	struct	s_box	*target_node; /* node que vamos trabalhar */
@@ -51,8 +51,6 @@ void	define_cheapest(t_box *b);
 void	set_price(t_box *a, t_box *b);
 void	start_boxes(t_box *a, t_box *b);
 
-
-
 //** linked lists utils **//
 
 t_box	*cheapest(t_box *stack);
@@ -60,6 +58,24 @@ t_box	*smallest_box(t_box *stack);
 t_box	*last_node(t_box *list);
 void	join_box(t_box **stack, int nbr);
 int	stack_size(t_box *stack);
+bool	stack_sort(t_box *stack);
+
+//** Algoritmos **//
+
+void	three_sort(t_box **a);
+void	five_sort(t_box **a, t_box **b);
+
+//** Commands **//
+
+void	sa(t_box **a, bool checker);
+void	sb(t_box **b, bool checker);
+void	ss(t_box **a, t_box **b, bool checker);
+void	ra(t_box **a, bool checker);
+void	rb(t_box **b, bool checker);
+void	rr(t_box **a, t_box **b, bool checker);
+void	rra(t_box **a, bool checker);
+void	rrb(t_box **b, bool checker);
+void	rrr(t_box **a, t_box **b, bool checker);
 
 
 #endif

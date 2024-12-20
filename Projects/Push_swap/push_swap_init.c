@@ -45,16 +45,16 @@ static void	find_target_box(t_box *a, t_box *b)
 		current_a = a;
 		while(current_a)
 		{
-			if(current_a->value > b->value
-					&& current_a->value < best_match)
+			if(current_a->nb > b->nb
+					&& current_a->nb < best_match)
 			{
-				best_match = current_a->value;
+				best_match = current_a->nb;
 				target_box = current_a;
 			}
 			current_a = current_a->next;
 		}
 		if(best_match == LONG_MAX)
-			b->target_node->node = smallest_box(a);
+			b->target_node = smallest_box(a);
 		else
 			b->target_node = target_box;
 		b = b->next;
@@ -93,7 +93,7 @@ void	set_price(t_box *a, t_box *b)
 	{
 		b->push_price = b->position;
 		if(!(b->above_median))
-			b->push_price = size_b - (b->current_position);
+			b->push_price = size_b - (b->position);
 		if(b->target_node->above_median)
 			b->push_price += b->target_node->position;
 		else

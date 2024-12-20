@@ -37,7 +37,7 @@ int main(int ac, char *av[])
 		}
 		else if (stack_size(a) == 3)
 		{
-			tiny_sort(&a);
+			three_sort(&a);
 		}
 		else
 		{

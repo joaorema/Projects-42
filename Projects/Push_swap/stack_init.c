@@ -32,7 +32,7 @@ static long	ft_atol(const char *str)
 		}
 		i++;
 	}
-	while (str[i] >= '0' && str[i] == <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		r = r * 10 + (str[i] - '0');
 		i++;
@@ -60,7 +60,7 @@ void	init_stack(t_box **a, char *av[], bool flag)
 		{
 			ft_error(a, av, flag);
 		}
-		append_node(a, (int)nbr);
+		join_box(a, (int)nb);
 		i++;
 	}
 	if (flag)

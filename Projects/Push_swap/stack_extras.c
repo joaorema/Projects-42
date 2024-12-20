@@ -38,13 +38,13 @@ void	join_box (t_box **stack, int nbr) // adiciona uma box no fim da lista//
 	if (!*stack)
 	{
 		*stack = box;
-		box->prev = NULL;
+		box->previous = NULL;
 	}
 	else
 	{
 		last_box = last_node(*stack);
-		last_box->next = node;
-		node->prev = last_box;
+		last_box->next = box;
+		box->previous = last_box;
 	}
 }
 
@@ -73,9 +73,9 @@ t_box	*smallest_box(t_box *stack) // vai retomar a box com o valor mais pequeno 
 	smallest = LONG_MAX;
 	while (stack)
 	{
-		if (stack->value < smallest)
+		if (stack->nb < smallest)
 		{
-			smallest = stack->value;
+			smallest = stack->nb;
 			smallest_box = stack;
 		}
 		stack = stack->next;
