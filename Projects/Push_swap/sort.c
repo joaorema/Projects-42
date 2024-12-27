@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-bool	stack_sort(t_box *stack)   //vai ao valor nas boxes e verifica se estao por ordem.
+bool	stack_sort(t_box *stack)
 {
 	if (stack == NULL)
 		return (1);
-	while(stack->next)
+	while (stack->next)
 	{
-		if(stack->nb > stack->next->nb)
+		if (stack->nb > stack->next->nb)
 			return (false);
 		stack = stack->next;
 	}
 	return (true);
 }
 
-static t_box	*f_highest(t_box *stack)  // vai encontrar a box com o maior valor 
+static t_box	*f_highest(t_box *stack)
 {
 	int		highest;
 	t_box	*highest_box;
@@ -45,7 +45,7 @@ static t_box	*f_highest(t_box *stack)  // vai encontrar a box com o maior valor
 	return (highest_box);
 }
 
-void	three_sort(t_box **a)  //quando temos apenas 3 boxes -
+void	three_sort(t_box **a)
 {
 	t_box	*highest_node;
 
@@ -54,18 +54,16 @@ void	three_sort(t_box **a)  //quando temos apenas 3 boxes -
 		ra(a, false);
 	else if ((*a)->next == highest_node)
 		rra(a, false);
-	if((*a)->nb > (*a)->next->nb)
+	if ((*a)->nb > (*a)->next->nb)
 		sa(a, false);
 }
 
-void	five_sort(t_box **a, t_box **b)  // mais de 3 boxes 
+void	five_sort(t_box **a, t_box **b)
 {
-	while(stack_size(*a) > 3)
+	while (stack_size(*a) > 3)
 	{
 		start_boxes(*a, *b);
 		finish_rotation(a, smallest_box(*a), 'a');
 		pb(b, a, false);
 	}
 }
-
-

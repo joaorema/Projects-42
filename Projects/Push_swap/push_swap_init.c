@@ -18,13 +18,13 @@ void	start_position(t_box *stack)
 	int	line;
 
 	i = 0;
-	if(stack == NULL)
+	if (stack == NULL)
 		return ;
-	line = stack_size(stack) / 2;  //para chegar a box do meio //
-	while(stack)
+	line = stack_size(stack) / 2;
+	while (stack)
 	{
 		stack->position = i;
-		if(i <= line)
+		if (i <= line)
 			stack->above_median = true;
 		else
 			stack->above_median = false;
@@ -37,23 +37,23 @@ static void	find_target_box(t_box *a, t_box *b)
 {
 	t_box	*current_a;
 	t_box	*target_box;
-	long		best_match;
-	
+	long	best_match;
+
 	while (b)
 	{
 		best_match = LONG_MAX;
 		current_a = a;
-		while(current_a)
+		while (current_a)
 		{
-			if(current_a->nb > b->nb
-					&& current_a->nb < best_match)
+			if (current_a->nb > b->nb
+				&& current_a->nb < best_match)
 			{
 				best_match = current_a->nb;
 				target_box = current_a;
 			}
 			current_a = current_a->next;
 		}
-		if(best_match == LONG_MAX)
+		if (best_match == LONG_MAX)
 			b->target_node = smallest_box(a);
 		else
 			b->target_node = target_box;
@@ -64,14 +64,14 @@ static void	find_target_box(t_box *a, t_box *b)
 void	define_cheapest(t_box *b)
 {
 	long		best_match;
-	t_box	*best_match_box;
+	t_box		*best_match_box;
 
-	if(b == NULL)
-		return;
+	if (b == NULL)
+		return ;
 	best_match = LONG_MAX;
-	while(b)
+	while (b)
 	{
-		if(b->push_price < best_match)
+		if (b->push_price < best_match)
 		{
 			best_match = b->push_price;
 			best_match_box = b;
@@ -88,13 +88,12 @@ void	set_price(t_box *a, t_box *b)
 
 	size_a = stack_size(a);
 	size_b = stack_size(b);
-
-	while(b)
+	while (b)
 	{
 		b->push_price = b->position;
-		if(!(b->above_median))
+		if (!(b->above_median))
 			b->push_price = size_b - (b->position);
-		if(b->target_node->above_median)
+		if (b->target_node->above_median)
 			b->push_price += b->target_node->position;
 		else
 			b->push_price += size_a - (b->target_node->position);
@@ -110,5 +109,3 @@ void	start_boxes(t_box *a, t_box *b)
 	set_price(a, b);
 	define_cheapest(b);
 }
-			
-	

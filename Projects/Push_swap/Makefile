@@ -1,12 +1,15 @@
 SRCS = \
     ft_error.c \
+    push_command.c \
+    push_swap_command.c \
     push_swap_init.c \
+    sort.c \
     split.c \
     stack_extras.c \
     stack_init.c \
-    swap_rotate.c \
-    sort.c \
     swap_moves.c \
+    swap_rotate.c \
+    swap_r_rotate.c
     
 
 OBJS = $(SRCS:.c=.o)

@@ -41,59 +41,45 @@ static int	count_words(char *str, char sep)
 static char	*next_word(char *str, char sep)
 {
 	static int	pos = 0;
-	char	*next_str;
-	int	len;
-	int	i;
+	char		*next_str;
+	int			len;
+	int			i;
 
 	len = 0;
 	i = 0;
 	while (str[pos] == sep)
-	{
-		pos++;
-	}
+		++pos;
 	while ((str[pos + len]) && str[pos + len] != sep)
-	{
-		len++;
-	}
-	next_str = malloc(sizeof(char) * (size_t) len + 1); 
+		++len;
+	next_str = malloc(sizeof(char) * (size_t) len + 1);
 	if (!next_str)
-	{
-		return NULL;
-	}
-	while ((str[pos]) && str[pos] != sep)
-	{
-		next_str[i] = str[pos++];
-	}
+		return (NULL);
+	while ((str[pos] != sep) && str[pos])
+		next_str[i++] = str[pos++];
 	next_str[i] = '\0';
 	return (next_str);
 }
 
 char	**split(char *str, char sep)
 {
-	int	wc;
-	int	i;
-	char 	**strings;
+	int		wc;
+	char	**strings;
+	int		i;
 
 	i = 0;
 	wc = count_words(str, sep);
 	if (!wc)
-	{
-		return 0;
-	}
+		exit (1);
 	strings = malloc(sizeof(char *) * (size_t)(wc + 2));
 	if (!strings)
-	{
-		return NULL;
-	}
+		return (NULL);
 	while (wc-- >= 0)
 	{
-		if(i == 0)
+		if (i == 0)
 		{
 			strings[i] = malloc(sizeof(char));
 			if (!strings[i])
-			{
-				return NULL;
-			}
+				return (NULL);
 			strings[i++][0] = '\0';
 			continue ;
 		}

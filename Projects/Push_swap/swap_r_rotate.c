@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_rotate.c                                      :+:      :+:    :+:   */
+/*   swap_r_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpedro-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 12:32:21 by jpedro-c          #+#    #+#             */
-/*   Updated: 2024/12/20 12:42:32 by jpedro-c         ###   ########.fr       */
+/*   Created: 2024/12/27 10:58:14 by jpedro-c          #+#    #+#             */
+/*   Updated: 2024/12/27 11:02:56 by jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_box **stack)
+static void	reverse_rotate(t_box **stack)
 {
-	t_box	*last_box;
+	t_box	*last;
 	int		len;
 
 	len = stack_size(*stack);
-	if (stack == NULL || *stack == NULL || len == 1)
+	if (*stack == NULL || stack == NULL || len == 1)
 		return ;
-	last_box = last_node(*stack);
-	last_box->next = *stack;
-	*stack = (*stack)->next;
-	(*stack)->previous = NULL;
-	last_box->next->previous = last_box;
-	last_box->next->next = NULL;
+	last = last_node(*stack);
+	last->previous->next = NULL;
+	last->next = *stack;
+	last->previous = NULL;
+	*stack = last;
+	last->next->previous = last;
 }
 
-void	ra(t_box **a, bool checker)
+void	rra(t_box **a, bool checker)
 {
-	rotate(a);
+	reverse_rotate(a);
 	if (!checker)
-		write(1, "ra\n", 3);
+		write(1, "rra\n", 4);
 }
 
-void	rb(t_box **b, bool checker)
+void	rrb(t_box **b, bool checker)
 {
-	rotate(b);
+	reverse_rotate(b);
 	if (!checker)
-		write(1, "rb\n", 3);
+		write(1, "rrb\n", 4);
 }
 
-void	rr(t_box **a, t_box **b, bool checker)
+void	rrr(t_box **a, t_box **b, bool checker)
 {
-	rotate(a);
-	rotate(b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	if (!checker)
-		write(1, "rr\n", 3);
+		write(1, "rrr\n", 4);
 }

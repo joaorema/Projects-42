@@ -29,8 +29,9 @@ void	clear_stack(t_box **stack)
 	t_box	*temp;
 	t_box	*current;
 
-	if (stack == NULL)
+	if (stack == NULL || *stack == NULL)
 		return ;
+	current = *stack;
 	while (current)
 	{
 		temp = current->next;
@@ -40,10 +41,10 @@ void	clear_stack(t_box **stack)
 	*stack = NULL;
 }
 
-void	ft_error(t_box **a, char *av[], bool flag)
+void	ft_error(t_box **a, char *av[], bool flag_ac_2)
 {
 	clear_stack(a);
-	if (flag)
+	if (flag_ac_2)
 	{
 		free_split(av);
 	}
@@ -71,13 +72,16 @@ int	check_syntax(char *str_nb)
 
 	i = 0;
 	str = str_nb;
-	if (str[i] != '+' && str[i] != '-' && (str[i] < '0' || str[i] > '9'))
+	if (!(str[i] == '+'
+		|| str[i] == '-' 
+		|| (str[i] >= '0' && str[i] <= '9')))
 		return (1);
-	if ((str[i] == '+' || str[i] == '-') && (str[i + 1] < '0' || str[i + 1] > '9'))
+	if ((str[i] == '+' || str[i] == '-')
+		&& !(str[i + 1] >= '0' && str[i + 1] <= '9'))
 		return (1);
 	while (str[i++])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (!(str[i] >= '0' || str[i] <= '9'))
 		{
 			return (1);
 		}

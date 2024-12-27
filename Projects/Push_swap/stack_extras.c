@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_box	*last_node(t_box *list)   //itera todas as listas e retoma a ultima//
+t_box	*last_node(t_box *list)
 {
 	if (list == NULL)
 		return (NULL);
@@ -23,7 +23,7 @@ t_box	*last_node(t_box *list)   //itera todas as listas e retoma a ultima//
 	return (list);
 }
 
-void	join_box (t_box **stack, int nbr) // adiciona uma box no fim da lista//
+void	join_box(t_box **stack, int nbr)
 {
 	t_box	*box;
 	t_box	*last_box;
@@ -32,7 +32,7 @@ void	join_box (t_box **stack, int nbr) // adiciona uma box no fim da lista//
 		return ;
 	box = malloc(sizeof(t_box));
 	if (!box)
-		return;
+		return ;
 	box->next = NULL;
 	box->nb = nbr;
 	if (!*stack)
@@ -48,7 +48,7 @@ void	join_box (t_box **stack, int nbr) // adiciona uma box no fim da lista//
 	}
 }
 
-int	stack_size(t_box *stack) // conta quantas boxs existem //
+int	stack_size(t_box *stack)
 {
 	int	count;
 
@@ -63,7 +63,7 @@ int	stack_size(t_box *stack) // conta quantas boxs existem //
 	return (count);
 }
 
-t_box	*smallest_box(t_box *stack) // vai retomar a box com o valor mais pequeno //
+t_box	*smallest_box(t_box *stack)
 {
 	long	smallest;
 	t_box	*smallest_box;
@@ -89,8 +89,8 @@ t_box	*cheapest(t_box *stack)
 		return (NULL);
 	while (stack)
 	{
-		if(stack->cheapest)   // se o stack esta no mais barato retoma isso //
-			return(stack);
+		if (stack->cheapest)
+			return (stack);
 		stack = stack->next;
 	}
 	return (NULL);

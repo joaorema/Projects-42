@@ -11,38 +11,35 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
 	t_box	*a;
 	t_box	*b;
 
 	a = NULL;
 	b = NULL;
-
 	if (ac == 1 || (ac == 2 && !av[1][0]))
-	{
 		return (1);
-	}
 	else if (ac == 2)
-	{
-		av = ft_split(av[1], ' ');
-	}
-	start_stack(&a, av + 1, ac == 2);
-	if (!start_stack(a))
+		av = split(av[1], ' ');
+	init_stack(&a, av + 1, ac == 2);
+	if (!stack_sort(a))
 	{
 		if (stack_size(a) == 2)
-		{
 			sa(&a, false);
-		}
 		else if (stack_size(a) == 3)
-		{
 			three_sort(&a);
-		}
 		else
-		{
 			push_swap(&a, &b);
-		}
 	}
+	/*t_box *current = a;  //para confirmar ordem dos numeros// 
+	while(current != NULL)
+	{
+		printf("%d\n", current->nb);
+		current = current->next;
+	}
+	*/
 	clear_stack(&a);
-}
+}	
