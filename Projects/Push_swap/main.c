@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	main(int ac, char *av[])
 {
@@ -34,12 +33,5 @@ int	main(int ac, char *av[])
 		else
 			push_swap(&a, &b);
 	}
-	/*t_box *current = a;  //para confirmar ordem dos numeros// 
-	while(current != NULL)
-	{
-		printf("%d\n", current->nb);
-		current = current->next;
-	}
-	*/
 	clear_stack(&a);
-}	
+}

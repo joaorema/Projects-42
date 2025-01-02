@@ -73,8 +73,8 @@ int	check_syntax(char *str_nb)
 	i = 0;
 	str = str_nb;
 	if (!(str[i] == '+'
-		|| str[i] == '-' 
-		|| (str[i] >= '0' && str[i] <= '9')))
+			|| str[i] == '-'
+			|| (str[i] >= '0' && str[i] <= '9')))
 		return (1);
 	if ((str[i] == '+' || str[i] == '-')
 		&& !(str[i + 1] >= '0' && str[i + 1] <= '9'))

@@ -21,20 +21,22 @@ CC = cc
 
 CC_FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(NAME) $(ARCHIVE)
 	@echo "\033[0;32mCompilation Successful!\033[0m"
 
-$(NAME): $(ARCHIVE)
-	$(CC) $< -o $@
+$(NAME): $(OBJS)
+	$(CC) $(CC_FLAGS) -o $(NAME) $(OBJS)
 
-$(ARCHIVE) : $(OBJS)
+$(ARCHIVE): $(OBJS)
 	ar rcs $(ARCHIVE) $(OBJS)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) 
 	@echo "\033[0;31mObjects removed\033[0m"
+
 fclean: clean
 	rm -f $(NAME) $(ARCHIVE)
-	@echo "\033[0;31mLibftprintf.a removed\033[0m"
+	@echo "\033[0;31mExecutable and archive removed\033[0m"
 
 re: fclean all
 
