@@ -78,7 +78,6 @@ void check_wall(t_game *game)
     int i;
 
     i = 0;
-
     while(i < game->map_witdh)
     {
         if(game->map[0][i] != '1' || game->map[game->map_height - 1][i] != '1')
@@ -88,7 +87,7 @@ void check_wall(t_game *game)
     i = 0;
     while(i < game->map_height)
     {
-        if(game->map[i][0] != 1 || game->map[i][game->map_witdh - 1] != '1')
+        if(game->map[i][0] != '1' || game->map[i][game->map_witdh - 1] != '1')
             close_game(game,"Error, map is file not valid");
         i++;
     }
@@ -135,9 +134,11 @@ void check_wall(t_game *game)
 
     void check_map(t_game *game)
     {
-        if(check_form == 0)
-        {
-            
-
-        }
+        if(!check_form(game))
+            close_game(game, "Error, map is not the correct shape");
+        check_wall(game);
+        check_letters(game);
+        if(game->collect <= 0 || game->exit != 1 || game->player != 1)
+            close_game(game, "Error, Map needs to have 1 exit and 1 player and 1 and more collectibles.");
     }
+    

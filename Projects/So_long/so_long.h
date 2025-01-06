@@ -33,5 +33,13 @@ typedef struct s_game {
 }   t_game;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int     handle_keyboard(int keycode, void *param);
+void check_map(t_game *game);
+void check_letters(t_game *game);
+void check_letter(t_game *game, int x, int y);
+void check_wall(t_game *game);
+void c_map_height(t_game *game, char text)
+
+int c_map_width(t_game *game, char text)
+int check_form(t_game *game);
+int handle_keyboard(int keycode, void *param);
 int handle_mouse(int keycode, void *param);
