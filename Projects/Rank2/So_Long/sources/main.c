@@ -17,10 +17,15 @@ int main(int ac, char *av[])
     start_window(&game);
     render_map(&game);  
     user_input(&game);  // input do user
+    mlx_loop_hook(game.mlx, main_loop, &game);
     mlx_hook(game.win, 17, 0, close_game_clean, &game); // fechar janela com o x
     mlx_loop(game.mlx);  // loop do jogo
 
 }
-
+int main_loop(t_game *game)
+{
+  user_input(game);
+  return (0);
+}
 
 

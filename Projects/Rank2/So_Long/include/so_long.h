@@ -65,10 +65,13 @@ void start_window(t_game *game);
 void render_map(t_game *game);
 void render_tile(t_game *game, int x, int y);
 void user_input(t_game *game);
+void player_move(t_game *game, int dx, int dy);
+void update_game(t_game *game);
 
 int check_form(t_game *game);
 int handle_keyboard(int keycode, t_game *game);
 int handle_mouse(int keycode, t_game game);
 int valid_position(t_game *game, int x, int y);
 int close_game_clean(t_game *game);
+int main_loop(t_game *game);
 t_game start_game(t_game *game);
