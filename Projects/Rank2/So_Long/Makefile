@@ -6,7 +6,8 @@ SRCS = \
     sources/path.c \
     sources/utils.c \
     sources/map.c \
-    sources/size.c
+    sources/size.c \
+	sources/init.c
     
 OBJS = $(SRCS:.c=.o)
 

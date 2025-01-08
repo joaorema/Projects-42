@@ -6,6 +6,9 @@
 #include <string.h>
 #include <unistd.h>
 
+# define TILE_SIZE 32
+
+
 typedef struct s_data{
     void    *img;
     char    *addr;
@@ -14,18 +17,13 @@ typedef struct s_data{
     int endian;
 }       t_data;
 
-typedef struct s_setup {
-    void    *mlx;
-    void    *win;
-}   t_setup;
-
 typedef struct s_position {
     int x;
     int y;
 }       t_position;
 
 typedef struct s_game {
-    int map_height; // nr de linha do mapa
+    int map_height; 
     int map_witdh; 
     char **map;
     char **map_temp;
@@ -36,8 +34,18 @@ typedef struct s_game {
     int collect;
     int check_collect;
     int path;
+    int moves;
+    int exit_open;
     void *walls;
     void *ground;
+    void *mlx;
+    void *win;
+    void *wall_image;
+    void *ground_image;
+    void *player_image;
+    void *collect_image;
+    void *exit_close_image;
+    void *exit_open_image;
 }   t_game;
 
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -52,8 +60,15 @@ void ft_clear(t_game *game);
 void close_game(t_game *game, char *text);
 void load_map(t_game *game, char *file);
 void c_map_width(t_game *game, char *text);
+void load_images(t_game *game);
+void start_window(t_game *game);
+void render_map(t_game *game);
+void render_tile(t_game *game, int x, int y);
+void user_input(t_game *game);
 
 int check_form(t_game *game);
-int handle_keyboard(int keycode, void *param);
-int handle_mouse(int keycode, void *param);
+int handle_keyboard(int keycode, t_game *game);
+int handle_mouse(int keycode, t_game game);
 int valid_position(t_game *game, int x, int y);
+int close_game_clean(t_game *game);
+t_game start_game(t_game *game);
