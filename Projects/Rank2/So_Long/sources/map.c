@@ -36,11 +36,13 @@ void render_tile(t_game *game, int x, int y)
         mlx_put_image_to_window(game->mlx, game->win, game->collect_image,
             x * TILE_SIZE, y * TILE_SIZE);
     else if(game->map[y][x] == 'E')
+    {
         mlx_put_image_to_window(game->mlx, game->win, game->exit_close_image,
             x * TILE_SIZE, y * TILE_SIZE);
-        if(game->exit_open)
+            if(game->exit_open)
             mlx_put_image_to_window(game->mlx, game->win, game->exit_open_image,
             x * TILE_SIZE, y * TILE_SIZE);
+    }
     else if(game->map[y][x] == 'P')
         mlx_put_image_to_window(game->mlx, game->win, game->player_image,
             x * TILE_SIZE, y * TILE_SIZE);

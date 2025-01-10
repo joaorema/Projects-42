@@ -17,9 +17,15 @@ int     handle_keyboard(int keycode, t_game *game)
     if(keycode == 115 || keycode == 65364)  // andar para baixo
         player_move(game, 0, 1);
     if(keycode == 97 || keycode == 65361)  // andar para esquerda
+    {
+        game->player_image = game->player_image_left;
         player_move(game, -1, 0);
+    }
     if(keycode == 100 || keycode == 65363)  // andar para direita
+    {   
+        game->player_image = game->player_image_right;
         player_move(game, 1, 0);
+    }
     return 0;
 }
 
@@ -48,7 +54,7 @@ void update_game(t_game *game)
             game->exit_open = 1;
     }
     if(game->map[game->player_y][game->player_x] == 'E' && game->exit_open)
-        close_game(game, "You win!!!!!");
+        close_game(game, "You won!");
     if(game->map[game->player_y][game->player_x] == '0')
         game->map[game->player_y][game->player_x] = 'P';
     

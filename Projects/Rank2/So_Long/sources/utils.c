@@ -26,14 +26,15 @@ void ft_clear(t_game *game)
     if(!game || !game->map)
         return ;
     i = 0;
-    while(i++ < game->map_height)
+    while(i < game->map_height)
     {
         free(game->map[i]);
         free(game->map_temp[i]);
+        i++;
     }
     free(game->map);
     free(game->map_temp);
-    /*ft_delete(game);   // falta fazer (vai apagar tudo (player, exit, collectible etc)) */
+    destroy_game(game);
     game->map = NULL;
     game->map_temp = NULL;
 }
@@ -57,8 +58,31 @@ t_game start_game(t_game *game)
     game->wall_image = NULL;
     game->ground_image = NULL;
     game->player_image = NULL;
+    game->player_image_left = NULL;
+    game->player_image_right = NULL;
     game->collect_image = NULL;
     game->exit_close_image = NULL;
     game->exit_open_image = NULL;
     return (*game);
 }
+void destroy_game(t_game *game)
+{
+    if(game->wall_image)
+        mlx_destroy_image(game->mlx, game->wall_image);
+    if(game->player_image)
+        mlx_destroy_image(game->mlx, game->player_image);
+    if(game->ground_image)
+        mlx_destroy_image(game->mlx, game->ground_image);
+    if(game->collect_image)
+        mlx_destroy_image(game->mlx, game->collect_image);
+    if(game->exit_close_image)
+        mlx_destroy_image(game->mlx, game->exit_close_image);
+    if(game->exit_open_image)
+        mlx_destroy_image(game->mlx, game->exit_open_image);
+    if(game->mlx)
+    {
+        mlx_destroy_display(game->mlx);
+        free(game->mlx);
+    }
+}
+

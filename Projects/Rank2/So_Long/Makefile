@@ -1,13 +1,12 @@
 SRCS = \
     sources/main.c \
     sources/keys.c \
-    sources/image.c \
     sources/parsing.c \
     sources/path.c \
     sources/utils.c \
     sources/map.c \
     sources/size.c \
-	sources/init.c
+    sources/init.c
     
 OBJS = $(SRCS:.c=.o)
 

@@ -8,15 +8,6 @@
 
 # define TILE_SIZE 32
 
-
-typedef struct s_data{
-    void    *img;
-    char    *addr;
-    int bits_per_pixel;
-    int line_lenght;
-    int endian;
-}       t_data;
-
 typedef struct s_position {
     int x;
     int y;
@@ -43,12 +34,13 @@ typedef struct s_game {
     void *wall_image;
     void *ground_image;
     void *player_image;
+    void *player_image_right;
+    void *player_image_left;  
     void *collect_image;
     void *exit_close_image;
     void *exit_open_image;
 }   t_game;
 
-void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void check_map(t_game *game);
 void check_letters(t_game *game);
 void check_letter(t_game *game, int x, int y);
@@ -67,6 +59,7 @@ void render_tile(t_game *game, int x, int y);
 void user_input(t_game *game);
 void player_move(t_game *game, int dx, int dy);
 void update_game(t_game *game);
+void destroy_game(t_game *game);
 
 int check_form(t_game *game);
 int handle_keyboard(int keycode, t_game *game);

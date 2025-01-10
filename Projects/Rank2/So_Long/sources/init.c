@@ -9,35 +9,25 @@ void load_images(t_game *game)
 
     game->moves = 0;
     game->mlx = mlx_init();
-    if(!game->mlx)
-        close_game(game, "Error, failed to start Mlx");
     game->wall_image = mlx_xpm_file_to_image(game->mlx, "./images/Wall.xpm",
             &img_width, &img_height);
-    if(!game->wall_image)
-        close_game(game, "falhou wall_image");
     game->player_image =  mlx_xpm_file_to_image(game->mlx, "./images/PlayerRight.xpm",
             &img_width, &img_height);
-    if(!game->player_image)
-        close_game(game, "falhou player_image");
+    game->player_image_left = mlx_xpm_file_to_image(game->mlx, "./images/PlayerLeft.xpm",
+            &img_width, &img_height);
+    game->player_image_right = mlx_xpm_file_to_image(game->mlx, "./images/PlayerRight.xpm",
+            &img_width, &img_height);
     game->ground_image =  mlx_xpm_file_to_image(game->mlx, "./images/Floor.xpm",
             &img_width, &img_height);
-    if(!game->ground_image)
-        close_game(game, "falhou ground image");
     game->collect_image = mlx_xpm_file_to_image(game->mlx, "./images/Collectible.xpm",
             &img_width, &img_height);
-    if(!game->collect_image)
-        close_game(game, "falhou collect image");
     game->exit_close_image = mlx_xpm_file_to_image(game->mlx, "./images/Closed_exit.xpm",
             &img_width, &img_height);
-    if(!game->exit_close_image)
-        close_game(game, "falhou exit close");
     game->exit_open_image = mlx_xpm_file_to_image(game->mlx, "./images/Open_exit.xpm",
             &img_width, &img_height);
-    if(!game->exit_open_image)
-        close_game(game, "falhou exit open");
-    /*if(!game->wall_image || !game->player_image || !game->ground_image || !game->collect_image
-        || !game->exit_close_image || game->exit_open_image )
-        close_game(game, "Error, Failed to load Images"); */
+    if(!game->wall_image || !game->player_image || !game->ground_image || !game->collect_image
+        || !game->exit_close_image || !game->exit_open_image )
+        close_game(game, "Error, Failed to load Images");
 }
 
 void start_window(t_game *game)
