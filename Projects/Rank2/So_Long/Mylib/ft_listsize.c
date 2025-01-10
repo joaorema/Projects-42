@@ -13,18 +13,19 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int ft_listsize(t_list *lst)
+int	ft_listsize(t_list *lst)
 {
-	int count = 0;
+	int	count;
 
-	if(lst == NULL)
+	count = 0;
+	if (lst == NULL)
 	{
-		return 0;
+		return (0);
 	}
-	while(lst != NULL)
+	while (lst != NULL)
 	{
 		count++;
 		lst = lst->next;
 	}
-	return count;
+	return (count);
 }

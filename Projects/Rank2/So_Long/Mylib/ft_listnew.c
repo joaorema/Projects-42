@@ -13,12 +13,12 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_list *ft_listnew(void *content)
+t_list	*ft_listnew(void *content)
 {
-	t_list new;
+	t_list	new;
 
 	new = malloc(sizeof(t_list));
-	if(new == NULL)
+	if (new == NULL)
 	{
 		return (NULL);
 	}
@@ -26,4 +26,3 @@ t_list *ft_listnew(void *content)
 	new->next = NULL;
 	return (node);
 }
-

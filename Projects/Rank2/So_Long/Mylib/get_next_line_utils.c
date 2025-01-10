@@ -18,13 +18,10 @@ char	*ft_strjoingnl(char const *s1, char const *s2)
 	char	*rest;
 	int		i;
 	int		j;
-	
-	if (!s1 || !s2)
-		return (NULL);
-	
+
 	size = ft_strlen(s1) + ft_strlen(s2);
 	rest = malloc(sizeof(char) * (size + 1));
-	if (!rest)
+	if (!rest || !s1 || !s2)
 		return (NULL);
 	i = 0;
 	while (s1[i] != 0)
