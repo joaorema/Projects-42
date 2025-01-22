@@ -17,7 +17,7 @@ int     main(int ac, char *av[], char *envp[])
             close_fd(fd);
         }    
         else if(pid == 0)         // we are on the child process (second_process) 
-            second_process(av, fd, envp);      
+            second_process(av, fd, envp);  //after running will leave the info in the pipe.    
         main_process(av, fd, envp);  
     }
     else
