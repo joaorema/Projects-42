@@ -2,7 +2,7 @@ Pipex
 
 int     main(int ac, char *av[], char *envp[])
 {
-    int     fd[2];                  // File descriptor // 0 = Main Process // 1 = Second Process
+    int     fd[2];                  // File descriptor // 0 = Read end // 1 = Write end
     pid_t   pid;                    // signed integer type which is capable of representing a process ID
 
     if(ac == 5) 
@@ -10,15 +10,15 @@ int     main(int ac, char *av[], char *envp[])
         pipe(fd);                    //connects both fds to the pipe
         if(pipe(fd) == -1)
             perror("pipe failed");
-        pid = fork();                //assign a process id to each side of the pipe
+        pid = fork();                //assign a process id to each process (parent process / child process = 0)
         if(pid == -1)
         {
             perror("fork failed");
             close_fd(fd);
         }    
-        else if(pid == 0)
+        else if(pid == 0)         // we are on the child process (second_process) 
             second_process(av, fd, envp);      
-        main_process(av, fd, envp);
+        main_process(av, fd, envp);  
     }
     else
     {
@@ -28,7 +28,7 @@ int     main(int ac, char *av[], char *envp[])
     return 0;
 }
 
-if pid ==  0
+if pid ==  0 (we are on the second process or child process)
   We run second_process that will open the file1 with read only and work with av[2]
     Second_Process:
       Then dup2 fd[1] stdout (writes on the pipe) and dup2 fd_nb (gets info from file1 and not keyboard).
