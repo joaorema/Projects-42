@@ -35,5 +35,12 @@ void	ft_free(char *str[]);
 char	*find_dir(char *cmd, char *envp[]);
 void	ft_cmd(char *av, char *envp[], int *fd);
 int		check_envp(char *envp[]);
+int	    check_envp_bonus(char *envp[]);
+void    main_process_bonus(char *av[], char *envp[]);
+void    ft_close_fd(int *fd);
+void    ft_free_bonus(char *str[]);
+int     set_files(char *file, int n);
+char    *find_dir_bonus(char *cmd, char *envp[]);
+void    run_cmd(char *av, char *envp[], int *fd);
 
 #endif 
