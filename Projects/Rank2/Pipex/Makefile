@@ -45,12 +45,17 @@ bonus/%.o: bonus/%.c
 clean:
 		$(RM) $(OBJS)
 
+clean_bonus:
+		$(RM) $(BONUS_OBJS)
+
+fclean_bonus: clean_bonus
+		$(RM) $(BONUS_NAME)
+		
+
 fclean: clean
 		$(RM) $(NAME)
 
-clean_bonus:
-		$(RM) $(BONUS_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus clean_bonus
