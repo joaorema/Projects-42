@@ -20,6 +20,14 @@
 # include <stdarg.h>
 # include <fcntl.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+t_list	*ft_listnew(void *content);
+
 void	ft_bzero(void *s, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -33,6 +41,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_bzerognl(void *s, size_t n);
 void	*ft_callocgnl(size_t nmemb, size_t size);
+void	ft_listadd_front(t_list **lst, t_list *new);
 
 int		ft_atoi(const char *nptr);
 int		ft_isalnum(int c);
@@ -51,6 +60,7 @@ int		ft_printc(int c);
 int		ft_printd(int n);
 int		ft_printu(unsigned int n);
 int		ft_printp(unsigned long pointer);
+int		ft_listsize(t_list *lst);
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);

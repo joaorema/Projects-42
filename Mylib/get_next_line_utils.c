@@ -19,11 +19,11 @@ char	*ft_strjoingnl(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	i = 0;
 	size = ft_strlen(s1) + ft_strlen(s2);
 	rest = malloc(sizeof(char) * (size + 1));
 	if (!rest || !s1 || !s2)
 		return (NULL);
+	i = 0;
 	while (s1[i] != 0)
 	{
 		rest[i] = s1[i];
