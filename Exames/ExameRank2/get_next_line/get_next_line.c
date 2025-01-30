@@ -1,15 +1,15 @@
 #include "get_next_line.h"
 
-static char *append_char(char *str, char c, int len)
+static char *join_char(char *str, char c, int len)
 {
     char *new_str;
     int i;
 
-    new_str = (char *)malloc(len + 2); // +1 for new char, +1 for '\0'
-    if (!new_str)
-        return (NULL);
+    new_str = (char *)malloc(len + 2);
+    if(!new_str)
+        return NULL;
     i = 0;
-    while (i < len)
+    while(i < len)
     {
         new_str[i] = str[i];
         i++;
@@ -17,73 +17,69 @@ static char *append_char(char *str, char c, int len)
     new_str[i++] = c;
     new_str[i] = '\0';
     free(str);
-    return (new_str);
+    return new_str;
 }
 
 char *get_next_line(int fd)
 {
     static char buffer[BUFFER_SIZE];
-    static int buf_index = 0;
-    static int buf_size = 0;
+    static int buffer_size = 0;
+    static int buffer_index = 0;
     char *line = NULL;
     int i = 0;
 
-    if (BUFFER_SIZE < 1 || fd < 0)
-        return (NULL);
+    if(BUFFER_SIZE < 1 || fd < 0)
+        return NULL;
     
     line = (char *)malloc(1);
-    if (!line)
-        return (NULL);
+    if(!line)
+        return NULL;
     line[0] = '\0';
-
-    while (1)
+    while(1)
     {
-        if (buf_index >= buf_size)
+        if(buffer_index >= buffer_size)
         {
-            buf_size = read(fd, buffer, BUFFER_SIZE);
-            buf_index = 0;
-            if (buf_size <= 0)
+            buffer_size = read(fd, buffer, BUFFER_SIZE);
+            buffer_index = 0;
+            if(buffer_size <= 0)
             {
-                if (i == 0)
+                if(i == 0)
                 {
                     free(line);
-                    return (NULL);
+                    return NULL;
                 }
-                break;
             }
+            break;
         }
-        line = append_char(line, buffer[buf_index++], i);
-        if (!line)
-            return (NULL);
-        if (line[i++] == '\n')
+        line = join_char(line, buffer[buffer_index++], i);
+        if(!line)
+            return NULL;
+        if(line[i++] == '\n')
             break;
     }
-    return (line);
+    return line;
 }
-/*
-int main(void)
-{
-    int     fd;
-    char    *str;
-    char    *path;
-    int     line;
 
-    path = "test.txt";
+#include <stdio.h>
+int main(int ac, char *av[])
+{
+
+    int fd;
+    char *path;
+    char *str;
+    
+    (void)ac;
+    path = av[1];
     fd = open(path, O_RDONLY);
-    if (fd < 0)
+    if(fd < 0)
     {
-        perror("Error opening file");
-        return (1);
+        printf("Error with file\n");
+        return 0;
     }
-    line = 1;
-    while ((str = get_next_line(fd)))
+    while((str = get_next_line(fd)))
     {
-        printf("Linha: %i\n", line);
-        printf("%s\n", str); 
-        free(str); 
-        line++;
+        printf("%s", str);
+        free(str);
     }
-    close(fd); 
-    return (0);
+    return 0;
 }
-*/
