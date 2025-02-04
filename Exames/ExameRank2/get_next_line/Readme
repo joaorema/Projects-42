@@ -1,3 +1,5 @@
+Tested on examerank2 with sucess : 01/02/2025
+
 Assignment name : get_next_line
 Expected files : get_next_line.c (42_EXAM can't take .h for now)
 Allowed functions: read, free, malloc
