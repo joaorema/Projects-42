@@ -1,6 +1,6 @@
 SRCS = \
-    main.c \
-	utils.c 
+    sources/main.c \
+	sources/utils.c 
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,27 +1,26 @@
 SRCS = \
-    ft_error.c \
-    push_command.c \
-    push_swap_command.c \
-    push_swap_init.c \
-    sort.c \
-    split.c \
-    stack_extras.c \
-    stack_init.c \
-    swap_moves.c \
-    swap_rotate.c \
-    swap_r_rotate.c \
-    main.c
+    sources/ft_error.c \
+    sources/push_command.c \
+    sources/push_swap_command.c \
+    sources/push_swap_init.c \
+    sources/sort.c \
+    sources/split.c \
+    sources/stack_extras.c \
+    sources/stack_init.c \
+    sources/swap_moves.c \
+    sources/swap_rotate.c \
+    sources/swap_r_rotate.c \
+    sources/main.c
 
 OBJS = $(SRCS:.c=.o)
 
 NAME = push_swap
-ARCHIVE = push_swap.a
 
 CC = cc
 
 CC_FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME) $(ARCHIVE)
+all: $(NAME) 
 	@echo "\033[0;32mCompilation Successful!\033[0m"
 
 $(NAME): $(OBJS)

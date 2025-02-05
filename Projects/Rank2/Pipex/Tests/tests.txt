@@ -1,6 +1,0 @@
-1 : 'sort -r' 'uniq -c' // sort and counts nr of occurence //a1
-2 : 'grep file' 'wc -w' //lines with file // b1
-3 : 'ls -l' 'wc l' //counts files folder // c1
-4 : 'wc -l' 'cat' // count lines // d1
-6 : 'grep error' 'wc -l' // lines with error // e1
-

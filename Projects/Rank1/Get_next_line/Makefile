@@ -1,17 +1,11 @@
-
 SRCS = \
-    sources/ft_printc.c \
-    sources/ft_printd.c \
-    sources/ft_printf.c \
-    sources/ft_printp.c \
-    sources/ft_prints.c \
-    sources/ft_printu.c \
-    sources/ft_printx.c
+    sources/get_next_line.c \
+    sources/get_next_line_utils.c 
     
     
 OBJS = $(SRCS:.c=.o)
 
-NAME = libftprintf.a
+NAME = get_next_line
 
 CC = cc
 
