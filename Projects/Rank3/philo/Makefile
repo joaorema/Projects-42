@@ -9,7 +9,7 @@ NAME = philo
 
 CC = cc
 
-CC_FLAGS = -Wall -Wextra -Werror -pthread
+CC_FLAGS = -Wall -Wextra -Werror -lpthread
 
 all: $(NAME) 
 	@echo "\033[0;32mCompilation Successful!\033[0m"
