@@ -8,8 +8,7 @@ int main(int ac, char *av[])
     {
       parse_nb(&table, av);
       init_data(&table);
-      philo_init(&table);
-      printf("nbr of philos : %ld\n", table.nbr_philo);       
+      return 0;      
     }
     else
         error_exit("Invalid nbr of arguments!");
