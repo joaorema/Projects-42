@@ -12,7 +12,7 @@ void    parse_nb(t_table *table, char *av[])
     if(av[5])
         table->max_meals = ft_atol(av[5]);
 }
-static const char *valid_nb(const char *str)
+const char *valid_nb(const char *str)
 {
     int len;
     const char *nb;

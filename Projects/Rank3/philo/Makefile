@@ -10,17 +10,21 @@ SRCS = \
 
 OBJS = $(SRCS:.c=.o)
 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
 NAME = philo
 
 CC = cc
 
-CC_FLAGS = -Wall -Wextra -Werror -lpthread -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME) 
 	@echo "\033[0;32mCompilation Successful!\033[0m"
 
 $(NAME): $(OBJS)
-	$(CC) $(CC_FLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(ARCHIVE): $(OBJS)
 	ar rcs $(ARCHIVE) $(OBJS)

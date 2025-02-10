@@ -81,7 +81,7 @@ typedef struct s_table
     t_philo *philos;  // array of philosophers;
 }               t_table;
 
-static const char *valid_nb(const char *str);
+const char *valid_nb(const char *str);
 bool    is_number(char c);
 bool    is_space(char c);
 bool    get_long(t_mtx *mutex, bool *value);
