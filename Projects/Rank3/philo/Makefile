@@ -1,6 +1,11 @@
 SRCS = \
     sources/philo.c \
-	sources/utils.c
+	sources/utils.c \
+	sources/get.c \
+	sources/init.c \
+	sources/parse.c \
+	sources/safe.c \
+	sources/write.c
 
 
 OBJS = $(SRCS:.c=.o)
@@ -9,7 +14,7 @@ NAME = philo
 
 CC = cc
 
-CC_FLAGS = -Wall -Wextra -Werror -lpthread
+CC_FLAGS = -Wall -Wextra -Werror -lpthread -g
 
 all: $(NAME) 
 	@echo "\033[0;32mCompilation Successful!\033[0m"
