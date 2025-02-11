@@ -17,14 +17,14 @@ bool    get_bool(t_mtx *mutex, bool *value)
     return 1;
 }
 
-void    set_long(t_mtx *mutex, bool *dest, bool value)
+void   set_long(t_mtx *mutex, long *dest, long value)
 {
     safe_mutex(mutex, LOCK);
     *dest = value;
     safe_mutex(mutex, UNLOCK);
 }
 
-bool    get_long(t_mtx *mutex, bool *value)
+long    get_long(t_mtx *mutex, long *value)
 {
     bool ret;
 

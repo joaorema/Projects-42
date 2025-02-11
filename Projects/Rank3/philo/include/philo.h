@@ -50,20 +50,21 @@ typedef enum s_time_code
 typedef struct s_fork
 {
     t_mtx       fork;
-    int         id_fork;
+    long         id_fork;
 
 }               t_fork;
 
 typedef struct s_philo
 {
-    int     id;
+    long     id;
     long    counter;
     long    time_of_last_meal;
-    long     full;
+    bool     full;
     t_fork  *first_fork;
     t_fork  *second_fork;
     pthread_t thread_id; 
     t_table  *table;
+    t_mtx   philo_mutex;
 }              t_philo;
 
 typedef struct s_table
@@ -75,7 +76,8 @@ typedef struct s_table
     long    max_meals;     //[5]
     long    start_simulation;
     bool    end_simulation;  // a philo dies or they are full;
-    t_mtx   table_mutex;
+    bool    threads_ready;  //true when all threads are done / false if not
+    t_mtx   table_mutex;    //the access the info that is previous on the struct
     t_mtx   write_mutex;
     t_fork  *forks;    // array of forks
     t_philo *philos;  // array of philosophers;
@@ -84,7 +86,7 @@ typedef struct s_table
 const char *valid_nb(const char *str);
 bool    is_number(char c);
 bool    is_space(char c);
-bool    get_long(t_mtx *mutex, bool *value);
+long    get_long(t_mtx *mutex, long *value);
 bool    get_bool(t_mtx *mutex, bool *value);
 bool    simulation_finish(t_table *table);
 long	ft_atol(const char *str);
@@ -98,9 +100,13 @@ void    safe_thread(pthread_t *thread, void *(*ft)(void *), void *data, t_code c
 void    thread_error(int status, t_code code);
 void    philo_init(t_table *table);
 void    init_data(t_table *table);
-void    set_long(t_mtx *mutex, bool *dest, bool value);
+void    set_long(t_mtx *mutex, long *dest, long value);
 void    set_bool(t_mtx *mutex, bool *dest, bool value);
 void    precise_usleep(long usec, t_table *table);
 void    write_status(t_philo_status status, t_philo *philo);
+void    wait_threads(t_table *table);
+void    *dinner_simulation(void *data);
+void    start_dinner(t_table *table);
+void    thinking(t_philo *philo);
 
 #endif

@@ -58,10 +58,10 @@ void    precise_usleep(long usec, t_table *table)
         elasped = get_time(MICROSECOND) - start;
         remaining = usec - elasped;
         if(remaining > 1000) // if remaining bigger than 1millisecond
-            usleep(remaining / 2);
+            usleep(remaining / 2);       
         else
         {
-            while(get_time(MICROSECOND) - start < usec)
+            while(get_time(MICROSECOND) - start < usec)   //spinlock
                 ;
         }
     }

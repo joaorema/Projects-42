@@ -1,32 +1,25 @@
-define dis
-display table->nbr_philo
-display table->time_to_die   
-display table->time_to_eat  
-display table->time_to_sleep
-display table->max_meals
-display table->start_simulation
-display table->end_simulation
-display table->philos
-display table->forks
-display i
-display table->fork[i].id_fork
+    define dis
 
+    break parse_nb
+    break init_data
+    break philo_init
+    break give_forks
+    break start_dinner
+    display table->nbr_philo
+    display table->time_to_die   
+    display table->time_to_eat  
+    display table->time_to_sleep
+    display table->max_meals
+    display table->start_simulation
+    display table->end_simulation
+    display table->philos
+    display table->forks
+    display i
+    display philo->id 
+    display philo->full
+    display philo->counter
+    display philo->table
+    display philo->first_fork
+    display philo->second_fork
+    display nbr_philos
 end
-
-define parse
-break parse_nb
-run
-display table->nbr_philo
-display table->time_to_die 
-display table->time_to_eat 
-display table->time_to_sleep
-display table->max_meals
-end
-
-define init
-break init_data
-run
-display i
-display table->end_simulation
-display table->fork[i].fork
-display forks[i].id_fork
