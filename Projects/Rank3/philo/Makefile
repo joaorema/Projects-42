@@ -19,7 +19,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Werror -Wextra -g
 
 all: $(NAME) 
 	@echo "\033[0;32mCompilation Successful!\033[0m"

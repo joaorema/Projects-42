@@ -14,10 +14,13 @@
 # define RED    "\033[1;31m"
 # define GREEN  "\033[1;32m"
 
+#define DEBUG_MODE 0
+
 typedef struct s_fork t_fork;
 typedef struct s_philo t_philo;
 typedef struct s_table t_table;
 typedef pthread_mutex_t t_mtx;
+
 
 typedef enum e_status
 {
@@ -103,7 +106,7 @@ void    init_data(t_table *table);
 void    set_long(t_mtx *mutex, long *dest, long value);
 void    set_bool(t_mtx *mutex, bool *dest, bool value);
 void    precise_usleep(long usec, t_table *table);
-void    write_status(t_philo_status status, t_philo *philo);
+void    write_status(t_philo_status status, t_philo *philo, bool debug);
 void    wait_threads(t_table *table);
 void    *dinner_simulation(void *data);
 void    start_dinner(t_table *table);

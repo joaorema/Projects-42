@@ -25,8 +25,11 @@ static void give_forks(t_philo *philo, t_fork *forks, int index)
     int nbr_philos;
 
     nbr_philos = philo->table->nbr_philo;    //how many philos exist
-    philo->first_fork = &forks[(index + 1) % nbr_philos];  //when philo id is odd
-    philo->second_fork = &forks[index];     
+    if(!philo->id % 2 == 0)
+    {
+        philo->first_fork = &forks[(index + 1) % nbr_philos];  //when philo id is odd
+        philo->second_fork = &forks[index];
+    }     
     if(philo->id % 2 == 0) // when philo id is even;
     {
         philo->first_fork = &forks[index];       //philo_id - 1 = philo 5 get fork nb 4
