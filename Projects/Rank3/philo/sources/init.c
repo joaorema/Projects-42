@@ -7,6 +7,7 @@ void    init_data(t_table *table)
     i = -1;
     table->end_simulation = false;
     table->threads_ready = false;
+    table->nbr_threads_running = 0;
     table->philos = safe_malloc(sizeof(t_philo) * table->nbr_philo);   ///malloc for the array of philos
     safe_mutex(&table->table_mutex, INIT);
     safe_mutex(&table->write_mutex, INIT);

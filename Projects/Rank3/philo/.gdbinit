@@ -1,12 +1,11 @@
     define dis
 
-    break start_dinner
-    break dinner_simulation
-    break eat
+    break parse_nb
+    break init_data
+    
 
-    display philo->id
-    display philo->first_fork->id_fork
-    display philo->second_fork->id_fork
-    display philo->counter
-    info threads
+   display table->nbr_philo
+   display table->time_to_die
+   display table->time_to_eat
+   display table->time_to_sleep
 end

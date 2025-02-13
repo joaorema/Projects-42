@@ -6,7 +6,8 @@ SRCS = \
 	sources/parse.c \
 	sources/safe.c \
 	sources/write.c \
-	sources/simulation.c
+	sources/simulation.c \
+	sources/extra_utils.c
 
 
 OBJS = $(SRCS:.c=.o)

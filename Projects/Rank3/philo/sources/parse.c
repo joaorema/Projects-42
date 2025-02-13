@@ -52,3 +52,5 @@ long	ft_atol(const char *str)
         error_exit("Error. The number is to big / int_max is the limit!");
     return nb;
 }
+
+

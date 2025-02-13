@@ -63,11 +63,11 @@ typedef struct s_philo
     long    counter;
     long    time_of_last_meal;
     bool     full;
+    pthread_t thread_id; 
+    t_mtx   philo_mutex;
     t_fork  *first_fork;
     t_fork  *second_fork;
-    pthread_t thread_id; 
     t_table  *table;
-    t_mtx   philo_mutex;
 }              t_philo;
 
 typedef struct s_table
@@ -78,8 +78,10 @@ typedef struct s_table
     long    time_to_sleep;  // 200
     long    max_meals;     //[5]
     long    start_simulation;
+    long    nbr_threads_running;
     bool    end_simulation;  // a philo dies or they are full;
     bool    threads_ready;  //true when all threads are done / false if not
+    pthread_t monitor;
     t_mtx   table_mutex;    //the access the info that is previous on the struct
     t_mtx   write_mutex;
     t_fork  *forks;    // array of forks
@@ -87,13 +89,17 @@ typedef struct s_table
 }               t_table;
 
 const char *valid_nb(const char *str);
+
 bool    is_number(char c);
 bool    is_space(char c);
-long    get_long(t_mtx *mutex, long *value);
 bool    get_bool(t_mtx *mutex, bool *value);
 bool    simulation_finish(t_table *table);
+bool    check_threads(t_mtx *mutex, long *threads, long philo_nbr);
+
+long    get_long(t_mtx *mutex, long *value);
 long	ft_atol(const char *str);
 long    get_time(t_time_code time_code);
+
 void    error_exit(const char *error);
 void    parse_nb(t_table *table, char *av[]);
 void    *safe_malloc(size_t bytes);
@@ -111,5 +117,8 @@ void    wait_threads(t_table *table);
 void    *dinner_simulation(void *data);
 void    start_dinner(t_table *table);
 void    thinking(t_philo *philo);
+void    increment_long(t_mtx *mutex, long *value);
+void    *check_dinner(void *data);
+void    *solo_philo(void *arg);
 
 #endif
