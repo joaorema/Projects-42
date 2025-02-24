@@ -9,6 +9,7 @@ int main(int ac, char *av[])
       parse_nb(&table, av);   //takes the arguments and iniciates the values on the table
       init_data(&table);     //inserts the info and starts all the mutex init for forks 
       start_dinner(&table);
+      clean(&table);
       
       return 0;      
     }

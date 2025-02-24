@@ -116,9 +116,11 @@ void    write_status(t_philo_status status, t_philo *philo, bool debug);
 void    wait_threads(t_table *table);
 void    *dinner_simulation(void *data);
 void    start_dinner(t_table *table);
-void    thinking(t_philo *philo);
+void    thinking(t_philo *philo, bool b_simulation);
 void    increment_long(t_mtx *mutex, long *value);
 void    *check_dinner(void *data);
 void    *solo_philo(void *arg);
+void    clean(t_table *table);
+void    fair(t_philo *philo);
 
 #endif

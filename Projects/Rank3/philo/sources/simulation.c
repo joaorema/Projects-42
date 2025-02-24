@@ -24,16 +24,16 @@ void    *dinner_simulation(void *data)
     philo = (t_philo *)data;
     wait_threads(philo->table);          //while table->threads_ready false wait for other threads. spinlock 
     set_long(&philo->philo_mutex, &philo->time_of_last_meal, get_time(MILLISECOND));
-    increment_long(&philo->table->table_mutex, &philo->table->nbr_threads_running); 
+    increment_long(&philo->table->table_mutex, &philo->table->nbr_threads_running);
+    fair(philo);
     while(!simulation_finish(philo->table))
     {
         if(philo->full)
             break;
         eat(philo);    /// eat
-        set_long(&philo->philo_mutex, &philo->time_of_last_meal, get_time(MILLISECOND));
         write_status(SLEEPING, philo, true);   // 
         precise_usleep(philo->table->time_to_sleep, philo->table);
-        thinking(philo);
+        thinking(philo, false);
     } 
     return 0;      
 }
@@ -63,7 +63,8 @@ void    start_dinner(t_table *table)
     {
         safe_thread(&table->philos[i].thread_id, NULL, NULL, JOIN);
     }
-   
+    set_bool(&table->table_mutex, &table->end_simulation, true);
+    safe_thread(&table->monitor, NULL, NULL, JOIN);
 }
 
 void    wait_threads(t_table *table)
@@ -71,9 +72,25 @@ void    wait_threads(t_table *table)
     while(!get_bool(&table->table_mutex, &table->threads_ready));  //while table->threads_ready false wait for other threads. spinlock
 }
 
-void    thinking(t_philo *philo)
+void    thinking(t_philo *philo, bool b_simulation)
 {
-    write_status(THINKING, philo, true);
+    long t_eat;
+    long t_think;
+    long t_sleep;
+
+    if(!b_simulation)
+        write_status(THINKING, philo, true);
+    if(philo->table->nbr_philo % 2 == 0)
+    {
+        return ;
+    }
+    t_eat = philo->table->time_to_eat;
+    t_sleep = philo->table->time_to_sleep;
+    t_think = (t_eat * 2) - t_sleep;
+    if(t_think < 0)
+        t_think = 0;
+    precise_usleep(t_think * 0.46, philo->table);
+    
 }
 
 void    *solo_philo(void *arg)
@@ -91,4 +108,22 @@ void    *solo_philo(void *arg)
         usleep(2000);
     }
     return NULL;
+}
+
+void    fair(t_philo *philo)
+{
+    if(philo->table->nbr_philo % 2 == 0)
+    {
+        if(philo->id % 2 == 0)
+        {
+            precise_usleep(30000, philo->table);
+        }
+    }
+    else
+    {
+        if(philo->id % 2)
+        {
+            thinking(philo, true);
+        }
+    }
 }
