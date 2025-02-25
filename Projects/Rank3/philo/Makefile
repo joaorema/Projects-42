@@ -1,13 +1,13 @@
 SRCS = \
-    sources/philo.c \
-	sources/utils.c \
-	sources/get.c \
-	sources/init.c \
-	sources/parse.c \
-	sources/safe.c \
-	sources/write.c \
-	sources/simulation.c \
-	sources/extra_utils.c
+	philo.c \
+	utils.c \
+	get.c \
+	init.c \
+	parse.c \
+	safe.c \
+	write.c \
+	simulation.c \
+	extra_utils.c
 
 
 OBJS = $(SRCS:.c=.o)
