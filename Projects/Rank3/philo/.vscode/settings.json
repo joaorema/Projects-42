@@ -1,6 +1,25 @@
 {
-    "files.associations": {
-        "philo.h": "c",
-        "safe": "cpp"
-    }
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "philosophers",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/jpedro-c/Downloads/rema/Projects/Rank3/philo/philo",
+            "args": ["2", "800", "200", "200"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "intelliSenseMode": "gcc-x64"
+        }
+    ]
 }
