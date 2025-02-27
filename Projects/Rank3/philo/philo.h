@@ -6,7 +6,7 @@
 /*   By: Jpedro-c <joaopcrema@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:47:37 by Jpedro-c          #+#    #+#             */
-/*   Updated: 2025/02/25 14:47:39 by Jpedro-c         ###   ########.fr       */
+/*   Updated: 2025/02/27 15:19:19 by Jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,7 @@ void		*check_dinner(void *data);
 void		*solo_philo(void *arg);
 void		clean(t_table *table);
 void		fair(t_philo *philo);
+
+int			check_number(char *av);
 
 #endif

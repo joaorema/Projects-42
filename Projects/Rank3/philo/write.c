@@ -6,7 +6,7 @@
 /*   By: Jpedro-c <joaopcrema@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:20:12 by Jpedro-c          #+#    #+#             */
-/*   Updated: 2025/02/25 12:33:38 by Jpedro-c         ###   ########.fr       */
+/*   Updated: 2025/02/27 15:20:04 by Jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	write_status(t_philo_status status, t_philo *philo)
 	safe_mutex(&philo->table->write_mutex, LOCK);
 	if ((status == FIRST_FORK || status == SECOND_FORK)
 		&& !simulation_finish(philo->table))
-		printf("%-6ld %ld has taken a fork \n", elapsed, philo->id);
+		printf("%-6ld %ld has taken a fork\n", elapsed, philo->id);
 	else if (status == EATING && !simulation_finish(philo->table))
-		printf("%-6ld %ld is a eating\n", elapsed, philo->id);
+		printf("%-6ld %ld is eating\n", elapsed, philo->id);
 	else if (status == SLEEPING && !simulation_finish(philo->table))
-		printf("%-6ld %ld is sleeping!\n", elapsed, philo->id);
+		printf("%-6ld %ld is sleeping\n", elapsed, philo->id);
 	else if (status == THINKING && !simulation_finish(philo->table))
-		printf("%-6ld %ld is thinking!\n", elapsed, philo->id);
+		printf("%-6ld %ld is thinking\n", elapsed, philo->id);
 	else if (status == DIED)
 		printf("%-6ld %ld is dead!\n", elapsed, philo->id);
 	safe_mutex(&philo->table->write_mutex, UNLOCK);
@@ -55,4 +55,18 @@ void	precise_usleep(long usec, t_table *table)
 				;
 		}
 	}
+}
+
+int	check_number(char *av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (!is_number(av[i]))
+			error_exit("Error, Argument can only contain numbers");
+		i++;
+	}
+	return (0);
 }

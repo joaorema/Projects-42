@@ -1,4 +1,7 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -6,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/home/jpedro-c/Downloads/rema/Projects/Rank3/philo/philo",
-            "args": ["2", "800", "200", "200"],
+            "args": ["3", "800", "700", "700", "5"]
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -19,7 +22,8 @@
                     "ignoreFailures": true
                 }
             ],
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "gcc-x64",
         }
     ]
+}
 }

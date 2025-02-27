@@ -6,7 +6,7 @@
 /*   By: Jpedro-c <joaopcrema@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:20:08 by Jpedro-c          #+#    #+#             */
-/*   Updated: 2025/02/25 12:20:09 by Jpedro-c         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:52:33 by Jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*safe_malloc(size_t bytes)
 
 	ret = malloc(bytes);
 	if (!ret)
-		error_exit("Error with MAlloc!");
+		error_exit("Error with Malloc!");
 	return (ret);
 }
 

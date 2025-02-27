@@ -6,7 +6,7 @@
 /*   By: Jpedro-c <joaopcrema@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:19:55 by Jpedro-c          #+#    #+#             */
-/*   Updated: 2025/02/25 12:19:56 by Jpedro-c         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:46:54 by Jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ const char	*valid_nb(const char *str)
 		i++;
 	else if (str[i] == '-')
 		error_exit("Error. Program only take positive numbers!\n");
-	if (!is_number(str[i]))
-		error_exit("Error. Input need to be numbers!");
 	nb = str;
 	while (is_number(str[i++]))
 		len++;

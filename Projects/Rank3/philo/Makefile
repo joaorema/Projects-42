@@ -21,8 +21,7 @@ NAME = philo
 CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g 
-CFLAGS += -fsanitize=thread
-#CFLAGS += -fsanitize=address
+
 
 all: $(NAME) 
 	@echo "\033[0;32mCompilation Successful!\033[0m"
