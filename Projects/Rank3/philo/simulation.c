@@ -6,7 +6,7 @@
 /*   By: Jpedro-c <joaopcrema@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:20:06 by Jpedro-c          #+#    #+#             */
-/*   Updated: 2025/02/26 15:46:37 by Jpedro-c         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:43:41 by Jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	start_dinner(t_table *table)
 
 	i = -1;
 	if (table->max_meals == 0)
-		return ;
+		return (error_exit("Max meals need to be bigger than 0!"));
 	else if (table->nbr_philo == 1)
 		s_thr(&table->philos[0].thread_id, solo_philo,
 			&table->philos[0], CREATE);

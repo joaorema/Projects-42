@@ -6,7 +6,7 @@
 /*   By: Jpedro-c <joaopcrema@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:19:55 by Jpedro-c          #+#    #+#             */
-/*   Updated: 2025/02/27 14:46:54 by Jpedro-c         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:42:13 by Jpedro-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	parse_nb(t_table *table, char *av[])
 		error_exit("Timestamp should be bigger than 60miliseconds!");
 	if (av[5])
 		table->max_meals = ft_atol(av[5]);
+	else
+		table->max_meals = -1;
 }
 
 const char	*valid_nb(const char *str)
